@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LSLC — War-Risk & Transit Clauses in Practice</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5F2EA; --navy:#0E1F36; --navy-ink:#1A2333;
+    --gold:#C8A04A; --muted:#8C8577; --hairline:rgba(14,31,54,0.12);
+    --hairline-on-navy:rgba(245,242,234,0.18);
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--cream); color:var(--navy-ink);
+    font-family:'Hanken Grotesk', sans-serif; -webkit-font-smoothing:antialiased; }
+  .doc{ max-width:760px; margin:0 auto; background:var(--cream); }
+  .mono{ font-family:'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:0.14em; }
+  .header{ background:var(--navy); color:var(--cream); padding:32px 40px 44px; }
+  .header-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:40px; }
+  .mark{ display:flex; align-items:center; gap:10px; }
+  .lslc-logo{ height:34px; width:auto; display:block; border-radius:3px; }
+  .badge{ display:inline-flex; align-items:center; gap:6px; border:1px solid var(--gold);
+    color:var(--gold); font-family:'IBM Plex Mono', monospace; font-size:10.5px;
+    letter-spacing:0.14em; padding:5px 11px; border-radius:20px; }
+  .eyebrow{ font-size:15px; font-weight:600; color:var(--gold); margin-bottom:20px; letter-spacing:0.16em; }
+  h1{ font-family:'Newsreader', serif; font-weight:400; font-size:38px; line-height:1.18;
+    margin:0 0 14px; max-width:560px; }
+  h1 em{ font-style:italic; color:var(--gold); }
+  .dek{ font-size:15px; line-height:1.6; color:var(--cream); opacity:0.85; max-width:520px; margin:0; }
+  .body{ padding:52px 40px 40px; }
+  .section{ padding-bottom:38px; margin-bottom:38px; border-bottom:1px solid var(--hairline); }
+  .section:last-of-type{ border-bottom:none; }
+  .section-label{ font-size:11px; color:var(--muted); margin-bottom:14px; }
+  .section h2{ font-family:'Newsreader', serif; font-weight:400; font-size:24px; line-height:1.28;
+    margin:0 0 8px; color:var(--navy); }
+  .section h2 em{ font-style:italic; color:var(--gold); }
+  .practical{ font-size:11.5px; color:var(--muted); margin:0 0 16px; letter-spacing:0.02em; }
+  .section p{ font-size:15.5px; line-height:1.68; margin:0 0 14px; max-width:640px; }
+  .section p:last-child{ margin-bottom:0; }
+  .pullquote{ border-left:2px solid var(--gold); padding:2px 0 2px 22px; margin:22px 0; }
+  .pullquote p{ font-family:'Newsreader', serif; font-style:italic; font-size:18px; line-height:1.5;
+    color:var(--navy); margin:0 0 6px; }
+  .pullquote .attr{ font-size:11px; color:var(--muted); }
+  .callout{ background:var(--navy); color:var(--cream); padding:24px 26px; margin-top:18px; }
+  .callout .section-label{ color:var(--gold); margin-bottom:8px; }
+  .callout p{ color:var(--cream); font-size:14px; line-height:1.6; max-width:100%; margin:0; }
+  .callout p + p{ margin-top:10px; }
+  .footer{ padding:30px 40px 44px; display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid var(--hairline); flex-wrap:wrap; gap:18px; }
+  .footer .mono{ font-size:10.5px; color:var(--muted); }
+  .footer .mono.gold{ color:var(--gold); }
+  .footer-left{ display:flex; flex-direction:column; gap:4px; }
+  .footer-copresenter{ opacity:0.7; }
+  .footer-right{ display:flex; align-items:center; gap:16px; }
+  .sh-logo{ height:20px; width:auto; }
+  @media (max-width:600px){
+    .header{ padding:24px 22px 32px; } .body{ padding:36px 22px 30px; }
+    .footer{ padding:24px 22px 32px; flex-direction:column; gap:10px; align-items:flex-start; }
+    h1{ font-size:28px; }
+  }
+
+  .site-nav{ display:flex; gap:10px; margin-top:16px; flex-wrap:wrap; }
+  .site-nav a{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--gold); text-decoration:none;
+    background:rgba(200,160,74,0.08); border:1px solid rgba(200,160,74,0.35);
+    padding:7px 13px; border-radius:20px; display:inline-flex; align-items:center; gap:6px;
+    transition:background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
+  }
+  .site-nav a::before{
+    content:"→"; font-size:10px; opacity:0; transform:translateX(-4px);
+    transition:opacity 0.25s ease, transform 0.25s ease;
+  }
+  .site-nav a:hover{
+    background:rgba(200,160,74,0.22); border-color:var(--gold);
+    transform:translateY(-2px);
+  }
+  .site-nav a:hover::before{ opacity:1; transform:translateX(0); }
+  .site-nav a.current{
+    background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:600;
+  }
+  .site-nav a.current::before{ display:none; }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="mark"><img src="/assets/img-7696996d33.jpg" alt="LSLC Business Forum" class="lslc-logo"></div>
+      <div class="badge">🔒 MEMBERS ONLY</div>
+    </div>
+    <div class="mono eyebrow">EXTENDED BRIEFING · WEBINAR SERIES · PART 3</div>
+    <h1>War-risk &amp; <em>transit</em> clauses in practice</h1>
+    <p class="dek">Six drafting and compliance points that came directly out of the 29 June session — for anyone reviewing, negotiating or standing behind a charter party, sale contract or freight-linked instrument touching the Gulf right now.</p>
+    <div class="site-nav"><a href="/">SUMMARY</a><a class="current" href="/member-resource/">EXTENDED BRIEFING (MEMBERS)</a><a href="/key-references/">KEY REFERENCES (MEMBERS)</a></div>
+  </div>
+
+  <div class="body">
+
+    <div class="section">
+      <div class="mono section-label">01 — THE CLAUSE THAT ACTUALLY GOT TESTED</div>
+      <h2>The word "<em>may</em>" is not neutral anymore.</h2>
+      <p class="practical mono">PRACTICAL TAKEAWAY: audit "may" language in war risk clauses before your next fixture</p>
+      <p>A tribunal has already held that detention becomes payable mid-passage — despite the war risk clause using the permissive word "may" rather than a mandatory formulation — on the basis that an implied term allocates that risk to the charterer as the party best placed to bear it.</p>
+      <p>The practical exposure: if your standard war risk clause still uses "may" without further definition, you cannot assume that wording protects the owner from a mid-voyage cost allocation dispute. Tribunals are willing to look past the literal permissiveness of the word to the commercial reality of who controls the decision to proceed.</p>
+      <div class="pullquote">
+        <p>"The proper party to have inherited the risk of delay is the charterer — and the poor beleaguered charterer."</p>
+        <div class="attr mono">ED TURNER · MECO GROUP</div>
+      </div>
+      <p><strong>Drafting point:</strong> where the parties intend "may" to mean unfettered owner discretion with no implied cost-sharing, say so expressly. Silence is now foreseeably going to be read against the party who could have drafted more precisely — which in most fixtures is the owner's broker.</p>
+    </div>
+
+    <div class="section">
+      <div class="mono section-label">02 — WHO ACTUALLY BENEFITS FROM A DIVERSION</div>
+      <h2>Build in a benefit-sharing mechanism, not just a cost one.</h2>
+      <p class="practical mono">PRACTICAL TAKEAWAY: diversion clauses should address upside, not only downside</p>
+      <p>The session raised a pointed observation: owners who diverted vessels to alternative discharge points such as Khor Fakkan or Fujairah rather than transiting Hormuz may, in some cases, have ended up commercially better off — better positioned to trade — than if the original passage had gone ahead. Most war risk and deviation clauses are drafted purely around cost recovery for the diverting party and say nothing about a benefit that accrues to them as a result.</p>
+      <p><strong>Drafting point:</strong> consider an express term requiring disclosure (and, where appropriate, an equitable adjustment) where a party invoking a war risk diversion right subsequently derives a material trading benefit from the diversion itself. Absent that, disputes will increasingly turn on implied good faith arguments rather than clear contractual mechanics.</p>
+    </div>
+
+    <div class="section">
+      <div class="mono section-label">03 — THE INSURANCE TRAP</div>
+      <h2>A ceasefire does not mean the compliance risk has cleared.</h2>
+      <p class="practical mono">PRACTICAL TAKEAWAY: treat any newly mandated local insurer as a sanctions screening event</p>
+      <p>Two days after the relevant MOU was signed, Iran's Persian Gulf Strait Authority began circulating a document requiring its own mandatory insurance for vessels transiting Hormuz — in the session's words, "my way or the highway." Separately, the panel noted that general sanctions relief of the kind referred to in the session (a General Licence-type instrument) does not extend automatically to IRGC-linked or otherwise separately designated entities, even where a broader ceasefire licence is in effect.</p>
+      <div class="callout">
+        <div class="mono section-label">COMPLIANCE FLAG</div>
+        <p>Any newly introduced local insurer, intermediary or "authority" tied to strait access should be treated as a fresh sanctions-screening event, not folded into existing compliance sign-off. Ceasefire terms and sanctions relief instruments operate on separate legal tracks and should never be assumed to move together.</p>
+      </div>
+      <p><strong>Drafting point:</strong> charter parties and sale contracts fixed for Gulf-adjacent trade should include an express warranty that neither party will procure or pay for insurance, tolls or intermediary services from an entity requiring separate sanctions clearance, with a clean walk-away right if such a requirement is imposed post-fixture.</p>
+    </div>
+
+    <div class="section">
+      <div class="mono section-label">04 — FRUSTRATION WITHOUT A FINISH LINE</div>
+      <h2>Don't assume the doctrine gives you a clean exit.</h2>
+      <p class="practical mono">PRACTICAL TAKEAWAY: consider a deemed-frustration longstop in future Gulf-adjacent fixtures</p>
+      <p>Unlike the Russia–Ukraine conflict, which developed a broadly accepted 12-month marker for when contracts of that vintage could reasonably be treated as frustrated, no equivalent marker has emerged for Hormuz. That leaves genuine uncertainty for any party assessing whether — and when — a frustration argument becomes available.</p>
+      <p><strong>Drafting point:</strong> rather than relying on the common law doctrine to develop its own marker over time, consider drafting an express "deemed frustration" longstop into new fixtures touching the region — a defined period of continued closure or restriction after which either party may treat the contract as discharged, without needing to establish frustration as a matter of general law.</p>
+    </div>
+
+    <div class="section">
+      <div class="mono section-label">05 — THE GAP IN STANDARD BLOCKADE WORDING</div>
+      <h2>Your war risk clause was not written for a law-of-war blockade.</h2>
+      <p class="practical mono">PRACTICAL TAKEAWAY: check whether your standard form addresses blockade specifically, not just "war risk" generally</p>
+      <p>Standard BIMCO-style war risk wording is largely silent on blockades beyond a standard short-notice provision (in the region of 48–72 hours), and was not drafted with a formally declared law-of-war blockade in mind — a materially different legal and operational scenario from a generalised war risk designation.</p>
+      <p><strong>Drafting point:</strong> where a fixture touches a region with credible blockade risk, a bespoke blockade clause — addressing notice periods, cost allocation, and the parties' respective rights on a law-of-war blockade specifically — is worth the additional negotiating time. Standard war risk wording should not be assumed to cover this scenario by default.</p>
+    </div>
+
+    <div class="section">
+      <div class="mono section-label">06 — WHAT MERCURIA V THE BALTIC EXCHANGE MEANS FOR YOUR PAPER</div>
+      <h2>If you price off a benchmark, you have exposure here too.</h2>
+      <p class="practical mono">PRACTICAL TAKEAWAY: build a benchmark-discontinuation fallback into freight and COA pricing</p>
+      <p>The dispute over the Baltic Exchange's TD3C benchmark turns on whether an index can remain valid once its underlying route becomes commercially unusable. Regardless of the outcome, the case is a reminder that benchmark-linked pricing carries a structural risk that most freight and COA contracts do not currently address in their own drafting — they simply assume the administrator will handle it.</p>
+      <p><strong>Drafting point:</strong> for any instrument priced off a route-specific benchmark, consider a fallback mechanism — similar in spirit to the LIBOR-transition drafting many finance lawyers are now familiar with — that specifies what happens if the benchmark administrator delays, refuses to adjust, or the route becomes unrepresentative for a sustained period. Do not leave that entirely to the administrator's discretion.</p>
+      <div class="callout">
+        <div class="mono section-label">WHERE THIS GOES NEXT</div>
+        <p>The case is expedited for an October hearing. LSLC will issue a follow-up member briefing once judgment is available, with a focus on what it settles — and what it deliberately leaves open — for anyone drafting benchmark-linked freight paper.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <div class="mono">LSLC · WEBINAR BRIEFING SERIES</div>
+      <div class="footer-copresenter mono">IN PARTNERSHIP WITH</div>
+    </div>
+    <div class="footer-right">
+      <img src="/assets/img-36d209bd4b.jpg" alt="Stephenson Harwood" class="sh-logo">
+      <div class="mono gold">MEMBERS ONLY · 29 JUN 2026</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
